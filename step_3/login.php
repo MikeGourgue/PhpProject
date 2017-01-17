@@ -1,0 +1,83 @@
+<?php include_once('utility/dbconfig.php');?>
+<?php include_once('utility/my_password_utility.php'); ?>
+<?php include_once('class.user.php'); ?>
+<?php include_once('header.php'); ?>
+
+<div class='container'><h1>Login Page dude</h1></div>
+<div class='clearfix'></div><br/>
+
+<?php
+// var_dump($_SESSION['auth']);
+
+if(isset($_POST['email']) && isset($_POST['password'])) {
+  $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL, FILTER_NULL_ON_FAILURE);
+  if (!is_null($email)) {
+    $returned = $user->login(filter_var($email, FILTER_SANITIZE_EMAIL), $_POST['password'], $_POST['remember']);
+    if (is_string($returned) && intval($returned) > 0) {
+      header('Location: index.php', 302);
+    }
+  } else {
+    $returned = 'no such mail';
+  }
+}?>
+
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-10'>
+
+
+      <form method='post'>
+        <table class='table table-bordered'>
+
+          <tr>
+            <td><h5>Email</h5></td>
+            <td><div class='col-sm-6'>
+              <input type='email' name='email' class='form-control' id='mail_input'
+              placeholder='Your mail, so we can sell it' onclick='error_popov('42')'  required>
+            </div><?php if (isset($returned) && $returned == 'no such mail') {?>
+
+              <h5>
+                <?php echo $returned; }?>
+              </h5>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td><h5>Password</h5></td>
+            <td><div class='col-sm-6'>
+              <input type='password' name='password' class='form-control'
+              id='pass_input' onload='error_popov()' required>
+            </div><?php if (isset($returned) && $returned == 'wrong password') {?>
+              <h5>
+                <?php echo $returned; }?>
+              </h5></td>
+            </tr>
+
+            <tr>
+              <td>
+
+                <h5><strong>Remember me</strong></h5>
+              </td>
+              <td>
+                <input name='remember' data-toggle='toggle' type='checkbox' data-on='Enabled' data-off='Disabled'>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan='2'>
+                <button type='submit' class='btn btn-primary' name='btn-login'>
+                  <span class='glyphicon glyphicon-log-in'></span>  Log <strong>dafuk</strong> in
+                </button>
+                <a href='inscription.php' class='btn btn-large btn-success'><i class='glyphicon glyphicon-plus'></i> &nbsp; <strong>Cum</strong> w/ us!</a>
+              </td>
+            </tr>
+
+
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+  <?php include_once('footer.php'); ?>
