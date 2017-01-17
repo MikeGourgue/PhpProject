@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <td><h5>First Name</h5></td>
             <td>
               <div class='col-sm-6'>
-                <input type='text' name='username' class='form-control' placeholder='Your wicked username' required>
+                <input type='text' name='username' class='form-control' placeholder='Username' required>
               </div>
             </td>
           </tr>
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <td><h5>Email</h5></td>
             <td>
               <div class='col-sm-6'>
-                <input type='email' name='email' class='form-control' placeholder='Your mail, so we cann sell it' required>
+                <input type='email' name='email' class='form-control' placeholder='Your mail' required>
                 <?php if (isset($query) && $query == 'invalid email, google it for syntax') {?>
                   <h5>
                     <?php echo $query; }?>
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <td>
                 <div class='col-sm-6'>
                   <input type='password' name='password' class='form-control' required>
-                  <?php if (isset($query) && $query == 'mismatching passwordz... douche') {?>
+                  <?php if (isset($query) && $query == 'wrong password') {?>
                     <h5>
                       <?php echo $query; }?>
                     </h5>

@@ -1,2 +1,0 @@
-# PhpProject
-All my projects

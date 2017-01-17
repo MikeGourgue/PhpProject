@@ -68,7 +68,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
             <tr>
               <td colspan='2'>
                 <button type='submit' class='btn btn-primary' name='btn-login'>
-                  <span class='glyphicon glyphicon-log-in'></span>  Log <strong>dafuk</strong> in
+                  <span class='glyphicon glyphicon-log-in'></span>  Log <strong>Login</strong> in
                 </button>
                 <a href='inscription.php' class='btn btn-large btn-success'><i class='glyphicon glyphicon-plus'></i> &nbsp; <strong>Cum</strong> w/ us!</a>
               </td>
